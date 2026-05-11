@@ -28,29 +28,31 @@ const allowedOrigins = new Set([
   'http://localhost:5174',
   'http://127.0.0.1:5173',
   'http://127.0.0.1:5174',
-
-  // Replace with your real Vercel frontend URL
-  'https://your-vercel-url.vercel.app'
+  'https://habit-tracker-wvvu.vercel.app'
 ]);
 
 // CORS setup
 app.use(
   cors({
     origin(origin, callback) {
-      // Allow requests with no origin (mobile apps, Postman, curl)
-      if (!origin) return callback(null, true);
+      // Allow requests with no origin
+      if (!origin) {
+        return callback(null, true);
+      }
 
+      // Allow approved origins
       if (allowedOrigins.has(origin)) {
         return callback(null, true);
       }
 
+      // Block others
       return callback(new Error('Not allowed by CORS'));
     },
     credentials: true
   })
 );
 
-// Body parser
+// Parse JSON
 app.use(express.json({ limit: '1mb' }));
 
 // Logger
