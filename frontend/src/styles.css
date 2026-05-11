@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+    width: 100%;
+  }
+
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    @apply bg-[#f7f8fb] text-slate-950 antialiased dark:bg-[#09090b] dark:text-zinc-50;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  /* Safe area support for notched devices */
+  @supports (padding: max(0px)) {
+    body {
+      padding-left: max(0px, env(safe-area-inset-left));
+      padding-right: max(0px, env(safe-area-inset-right));
+      padding-top: max(0px, env(safe-area-inset-top));
+      padding-bottom: max(0px, env(safe-area-inset-bottom));
+    }
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-slate-950 px-4 py-2.5 text-sm font-semibold text-white shadow-sm shadow-slate-950/10 transition hover:-translate-y-px hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-950/10 disabled:cursor-not-allowed disabled:translate-y-0 disabled:opacity-60 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200;
+  }
+
+  .btn-secondary {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-slate-200/80 bg-white/90 px-4 py-2.5 text-sm font-semibold text-slate-800 shadow-sm shadow-slate-950/[0.03] transition hover:-translate-y-px hover:border-slate-300 hover:bg-white focus:outline-none focus:ring-4 focus:ring-slate-500/10 dark:border-zinc-800 dark:bg-zinc-900/90 dark:text-zinc-100 dark:shadow-black/20 dark:hover:border-zinc-700 dark:hover:bg-zinc-800;
+  }
+
+  .field {
+    @apply min-h-11 w-full rounded-lg border border-slate-200/90 bg-white px-3.5 py-2 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 hover:border-slate-300 focus:border-slate-400 focus:ring-4 focus:ring-slate-500/10 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 dark:hover:border-zinc-700;
+  }
+
+  .panel {
+    @apply rounded-xl border border-slate-200/80 bg-white/95 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_18px_40px_rgba(15,23,42,0.06)] backdrop-blur dark:border-zinc-800/90 dark:bg-zinc-900/90 dark:shadow-black/20;
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500 dark:text-zinc-500;
+  }
+
+  .muted {
+    @apply text-slate-500 dark:text-zinc-400;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  button {
+    @apply min-h-12;
+  }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 500px) {
+  main {
+    @apply pb-16;
+  }
+}
